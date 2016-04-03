@@ -19,7 +19,6 @@ BuildRequires:  npm
 This program tests the phonetic program.
 
 %prep
-%setup -q
 
 
 %build
