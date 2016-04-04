@@ -5,31 +5,34 @@ Summary:        The jenkins client
 
 Group:          Administrative
 License:        GNU/GPL3
-URL:            git@github.com:desertedscorpion/whitevenus.git
+URL:            git@github.com:desertedscorpion/scatteredfinger.git
 Source:         %{name}-%{version}.tar.gz
 Prefix:         %{_prefix}
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
-Requires:       node
+BuildRequires:  nodejs
 BuildRequires:  npm
-%define debug_package %{nil}
+Requires:       nodejs
+# %define debug_package %{nil}
 
 
 %description
-This program tests the phonetic program.
+This program runs a jenkins-client.
 
 %prep
-
+%setup -q
 
 %build
-npm install
+while ! npm install
+do
+    sleep 10s
+    echo NETWORK PROBLEMS
+done
 
 %install
 rm -rf ${RPM_BUILD_ROOT}
 mkdir --parents ${RPM_BUILD_ROOT}/opt/jenkins-client
 cp --recursive node_modules server.express.js ${RPM_BUILD_ROOT}/opt/jenkins-client
-mkdir --parents ${RPM_BUILD_ROOT}/usr/local/bin
-
 
 %clean
 rm -rf ${RPM_BUILD_ROOT}
