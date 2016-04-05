@@ -10,10 +10,8 @@ Source:         %{name}-%{version}.tar.gz
 Prefix:         %{_prefix}
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
-BuildRequires:  nodejs
-BuildRequires:  npm
-Requires:       nodejs
-# %define debug_package %{nil}
+BuildRequires:  nodejs npm
+Requires:       nodejs jenkins
 
 
 %description
