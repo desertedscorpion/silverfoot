@@ -12,7 +12,7 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
 BuildRequires:  nodejs npm
 Requires:       nodejs jenkins
-
+%define debug_package %{nil}
 
 %description
 This program runs a jenkins-client.
